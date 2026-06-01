@@ -1,38 +1,59 @@
-# Binance Futures Testnet Simplified Trading Bot
+# ⚡ Binance Futures Testnet Simplified Trading Bot
 
-A lightweight, robust Python CLI tool built to interact securely with the Binance Futures Testnet (USDT-M) API. Designed with a clear separation of concerns, strict cryptographic request signing, and graceful input/error handling.
-
-## 🚀 Features
-- **Structural Cleanliness**: Fully segregated Client API layer, Business/Order layer, and Command CLI interface layer.
-- **Robust Security**: Built using native cryptographic signature pipelines (`hmac-sha256`) over raw `requests`. Avoids heavy third-party SDK dependencies.
-- **Dual Destination Logging**: Direct validation streams and API payloads track concurrently to both standard shell output and structured logfiles under `logs/bot.log`.
+A production-grade, dependency-light Python CLI tool engineered to securely package, sign, and execute algorithmic orders directly onto the Binance Futures Testnet (USDT-M) engine. Zero heavy wrappers. Pure cryptographic execution.
 
 ---
 
-## 🛠️ Setup & Installation
+## 🎯 Features
+- **Clean Architecture**: Fully decoupled layers separating CLI parser routing, business rules logic, and raw API communications.
+- **Hardened Security**: Uses native `hmac-sha256` signing signatures over lightweight `requests` primitives—preventing SDK version locks.
+- **Dual-Stream Logging**: Execution paths, validation checks, and wire footprints are streamed concurrently to stdout and persistent `logs/bot.log` files.
+- **Fail-Fast Boundaries**: Rigid pre-flight input inspection catches runtime anomalies before touching network layers.
 
-### 1. Clone the Repository
+---
+
+## 🛠️ Quickstart Guide
+
+### 1. Build the Workspace Environment
+# Clone the repository and navigate to workspace
 git clone <your-repository-url-here>
 cd trading_bot
-2. Configure Environment Isolation
+
+# Spin up isolated virtual environment
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-3. Install Required Dependencies
+
+# Install minimalist manifest footprint
 pip install -r requirements.txt
-4. Set Up API Credentials
-Create a .env file in the root directory of the project to securely house your credentials:
-Code snippet
-BINANCE_API_KEY="your_binance_testnet_api_key"
-BINANCE_API_SECRET="your_binance_testnet_api_secret"
-💻 Usage Examples
-The tool evaluates inputs natively using an explicit command-line interface framework.
-1. Place a Market Order
-Instantly execute a market entry position:
+
+### 2. Configure Local Secrets
+
+Populate a secret registry file named .env in your root project directory:
+BINANCE_API_KEY="your_binance_testnet_api_key_here"
+BINANCE_API_SECRET="your_binance_testnet_api_secret_here"
+
+
+💻 Live Production Runs
+
+The engine runs directly out of your terminal using explicit option flags.
+
 python cli.py --symbol BTCUSDT --side BUY --type MARKET --quantity 0.005
-2. Place a Limit Order
-Stage a priced limit tracking target on the order book:
+
+🟢 Instant Market Entry
+
+  python cli.py --symbol BTCUSDT --side BUY --type MARKET --quantity 0.005
+
+🔴 Strategic Limit Placement
+
 python cli.py --symbol BTCUSDT --side SELL --type LIMIT --quantity 0.01 --price 65250.00
-📝 Key Architectural Assumptions
-Symbol Syntax:Pair entries must explicitly follow the Binance standard USD-Margined tracking layout (e.g.,BTCUSDT,ETHUSDT).
-Time In Force:Limit orders assume a default policy execution mapping of GTC (Good'Till Cancelled).
-Precision Validation:The system passes volume truncation boundaries directly to the API handler to protect calculations against floating-point drift error conditions.
+
+
+🎛️ System Design & Assumptions
+
+Symbol Invariance: System expects strict USD-Margined trading syntax convention (e.g., BTCUSDT, ETHUSDT). Lowercase strings are normalized dynamically in the validation interceptor.
+
+Execution Policy: Limit tracking structures assume structural GTC (Good 'Till Cancelled) properties to enforce placement durability.
+
+Precision Delegation: Floating-point rounding boundaries are safely offloaded directly to the Testnet exchange handler engines, keeping internal calculation arrays perfectly predictable.
+
+Stream Tracking: Application processes naturally capture both full round-trip API network wire traces and intercept exceptions smoothly without crashing runtime processes.
