@@ -1,6 +1,0 @@
-2026-06-01 15:40:12,102-INFO-[client.py:35]-Sending POST request to /fapi/v1/order with payload parameters.
-2026-06-01 15:40:13,445-INFO-[client.py:42]-Successfully processed response from /fapi/v1/order
-2026-06-01 15:40:13,446-INFO-[orders.py:25]-Staging execution layout: BUY 0.005 BTCUSDT via MARKET
-2026-06-01 15:42:01,005-INFO-[client.py:35]-Sending POST request to /fapi/v1/order with payload parameters.
-2026-06-01 15:42:02,110-INFO-[client.py:42]-Successfully processed response from /fapi/v1/order
-2026-06-01 15:42:02,111-INFO-[orders.py:25]-Staging execution layout: SELL 0.01 BTCUSDT via LIMIT
